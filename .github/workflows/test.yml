@@ -1,0 +1,29 @@
+name: Test Action
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create mock directory
+        run: |
+          mkdir -p mock-project
+          echo "mock" > mock-project/test.txt
+
+      - name: Run stellarpath-action
+        uses: ./
+        with:
+          path: './mock-project'
+          format: 'markdown'
+          post-comment: 'true'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
