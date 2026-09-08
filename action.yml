@@ -1,0 +1,35 @@
+name: 'StellarPath Repository Navigator'
+description: 'Automates repository structure analysis, Soroban contract discovery, and PR navigation reports.'
+author: 'STELLAR-PATH'
+branding:
+  icon: 'compass'
+  color: 'purple'
+inputs:
+  path:
+    description: 'Path to scan'
+    required: false
+    default: '.'
+  format:
+    description: 'Output format (markdown|json|terminal)'
+    required: false
+    default: 'markdown'
+  post-comment:
+    description: 'Post summary as PR comment'
+    required: false
+    default: 'true'
+  github-token:
+    description: 'GitHub token for PR comments'
+    required: false
+    default: '${{ github.token }}'
+  version:
+    description: 'StellarPath CLI version tag to download'
+    required: false
+    default: 'latest'
+outputs:
+  archetype:
+    description: 'Detected project archetype'
+  report:
+    description: 'Raw scan output'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

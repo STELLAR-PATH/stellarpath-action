@@ -1,0 +1,20 @@
+{
+  "name": "stellarpath-action",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1",
+    "@actions/exec": "^3.0.0",
+    "@actions/github": "^9.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.5.0",
+    "@vercel/ncc": "^0.45.0",
+    "prettier": "^3.9.6",
+    "typescript": "^5.7.3"
+  }
+}
