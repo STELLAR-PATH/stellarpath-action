@@ -30,7 +30,7 @@ export async function postPrComment(token: string, markdownBody: string): Promis
     issue_number,
   });
 
-  const existingComment = comments.data.find(comment => comment.body?.includes(TAG));
+  const existingComment = comments.data.find((comment: any) => comment.body?.includes(TAG));
 
   if (existingComment) {
     core.info(`Updating existing comment (ID: ${existingComment.id})`);

@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
-import { ensureBinary } from './installer';
-import { runStellarPath } from './runner';
-import { postPrComment } from './comment';
+import { ensureBinary } from './installer.js';
+import { runStellarPath } from './runner.js';
+import { postPrComment } from './comment.js';
 
 async function run(): Promise<void> {
   try {
