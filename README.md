@@ -1,8 +1,12 @@
 # StellarPath Repository Navigator Action
 
+[![CI](https://github.com/STELLAR-PATH/stellarpath-action/actions/workflows/test.yml/badge.svg)](https://github.com/STELLAR-PATH/stellarpath-action/actions)
+
 Automates repository structure analysis, Soroban contract discovery, and PR navigation reports.
 
 ## Usage
+
+*Note: This action automatically downloads and runs the `stellarpath-cli` binary release under the hood to perform deterministic AST-backed scans.*
 
 Create a workflow file `.github/workflows/stellarpath.yml` in your repository.
 
