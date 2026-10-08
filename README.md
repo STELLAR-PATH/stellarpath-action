@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>🛡️ <code>stellarpath-action</code> 🛡️</h1>
+<h1><code>stellarpath-action</code></h1>
 <h3>Automated Pull Request Security Gatekeeper for Soroban</h3>
 
 [![Stellar Ecosystem](https://img.shields.io/badge/Stellar-Soroban-7B3FE4?style=for-the-badge&logo=stellar)](https://stellar.org)
@@ -12,7 +12,7 @@
 
 ---
 
-## 📖 1. Executive Summary
+## 1. Executive Summary
 
 `stellarpath-action` is the native GitHub Action deployment of the `stellarpath-cli` AST analyzer. It operates as an impenetrable continuous integration gatekeeper, automatically auditing incoming pull requests for Soroban smart contract repositories.
 
@@ -20,7 +20,7 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 
 ---
 
-## 🏗️ 2. Execution Architecture
+## 2. Execution Architecture
 
 1. **Environment Provisioning**: Downloads the pre-compiled `stellarpath-cli` Rust binary optimized for the GitHub Actions `ubuntu-latest` runner.
 2. **AST Scanning**: Executes `stellarpath scan --format sarif` against the designated contract directory.
@@ -38,7 +38,7 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 
 ---
 
-## 🚀 3. Implementation Matrix
+## 3. Implementation Matrix
 
 To integrate this gatekeeper, define a new workflow file at `.github/workflows/stellarpath-security.yml`.
 
@@ -86,7 +86,7 @@ jobs:
 
 ---
 
-## ⚙️ 4. Input Configuration Specifications
+## 4. Input Configuration Specifications
 
 | Input Key | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -99,7 +99,7 @@ jobs:
 
 ---
 
-## 🛡️ 5. SARIF Native Integration
+## 5. SARIF Native Integration
 
 When `output-format` is set to `sarif`, `stellarpath-action` serializes the AST diagnostic outputs into the Static Analysis Results Interchange Format (SARIF). 
 
@@ -107,7 +107,7 @@ When uploaded via the CodeQL action, this populates the **GitHub Security tab** 
 
 ---
 
-## ⚡ 6. Runner Environment & Caching Strategies
+## 6. Runner Environment & Caching Strategies
 
 `stellarpath-action` is aggressively optimized to keep CI durations as low as possible. 
 
@@ -117,7 +117,7 @@ When uploaded via the CodeQL action, this populates the **GitHub Security tab** 
 
 ---
 
-## 🎛️ 7. Customizing Lint Thresholds & Telemetry
+## 7. Customizing Lint Thresholds & Telemetry
 
 Security needs vary by project. By supplying a `stellarpath.toml` in your target directory, you can instruct `stellarpath-action` to adjust its telemetry.
 
