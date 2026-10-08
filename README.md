@@ -1,50 +1,64 @@
-# StellarPath Repository Navigator Action
+<div align="center">
 
-[![CI](https://github.com/STELLAR-PATH/stellarpath-action/actions/workflows/test.yml/badge.svg)](https://github.com/STELLAR-PATH/stellarpath-action/actions)
+# `stellarpath-action`
 
-Automates repository structure analysis, Soroban contract discovery, and PR navigation reports.
+**Automated Pull Request Security Gatekeeper for Soroban**
 
-## Usage
+[![Stellar Ecosystem](https://img.shields.io/badge/Stellar-Soroban-7B3FE4?style=for-the-badge&logo=stellar)](https://stellar.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
+[![Drips Stellar Wave](https://img.shields.io/badge/Drips-Stellar%20Wave%20Participant-00D395?style=for-the-badge)](https://drips.network)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-*Note: This action automatically downloads and runs the `stellarpath-cli` binary release under the hood to perform deterministic AST-backed scans.*
+</div>
 
-Create a workflow file `.github/workflows/stellarpath.yml` in your repository.
+## 📖 Overview
+
+`stellarpath-action` is a native GitHub Action that integrates `stellarpath-cli` directly into your CI/CD pipeline. It executes deterministic AST lint checks on every pull request, preventing security regressions and storage collisions from being merged into your main branch.
+
+## ✨ Key Features
+
+- **Inline PR Annotations**: Comments directly on lines of code that contain security vulnerabilities or Soroban anti-patterns.
+- **Zero-Warning Verification**: Blocks PRs from merging if critical severity issues are detected.
+- **SARIF Diagnostics**: Uploads results to GitHub Advanced Security natively.
+- **Fast Execution**: Downloads pre-compiled `stellarpath-cli` binaries for instant checks.
+
+## 🚀 Usage in Your Repository
+
+Add the following workflow file to your Soroban contract repository (e.g., `.github/workflows/stellarpath.yml`):
 
 ```yaml
-name: StellarPath Scan
+name: Soroban Security Audit
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ "main" ]
 
 jobs:
-  scan:
+  analyze:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: read
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Run StellarPath Navigator
+        
+      - name: Run STELLAR-PATH Linting
         uses: STELLAR-PATH/stellarpath-action@v1
         with:
-          path: '.'
-          format: 'markdown'
-          post-comment: 'true'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          target-directory: './contracts'
+          fail-on-warnings: true
 ```
 
-### Inputs
+## 🤝 Contributing & Reviewers
 
-- `path`: Path to scan (default: `.`)
-- `format`: Output format (`markdown`, `json`, `terminal`) (default: `markdown`)
-- `post-comment`: Post summary as PR comment (default: `true`)
-- `github-token`: GitHub token for PR comments (default: `${{ github.token }}`)
-- `version`: StellarPath CLI version tag to download (default: `latest`)
+**For Contributors:**
+- Install dependencies with `npm install`.
+- The main action logic is in `src/main.ts`.
+- Before committing, you must compile the action using `npm run build` or `npm run package` to update the `dist/` folder, as GitHub Actions runs the packaged JavaScript.
 
-### Outputs
+**For Reviewers:**
+- Verify that changes to `action.yml` inputs align with the TypeScript definitions.
+- Ensure any CLI version bumps are reflected securely via sha256 checksums if downloading binaries.
 
-- `archetype`: Detected project archetype
-- `report`: Raw scan output
+---
+<div align="center">
+  <sub>Part of the <a href="https://github.com/STELLAR-PATH">STELLAR-PATH</a> Toolchain. Built for the Soroban ecosystem.</sub>
+</div>
