@@ -14,14 +14,13 @@
 
 [![Stellar Ecosystem](https://img.shields.io/badge/Stellar-Soroban-7B3FE4?style=for-the-badge&logo=stellar)](https://stellar.org)
 [![Rust 2021](https://img.shields.io/badge/Rust-2021-DEA584?style=for-the-badge&logo=rust)](https://www.rust-lang.org)
-[![Drips Stellar Wave](https://img.shields.io/badge/Drips-Stellar%20Wave%20Participant-00D395?style=for-the-badge)](https://drips.network)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 </div>
 
 ---
 
-## 📖 1. Executive Summary
+##  1. Executive Summary
 
 `stellarpath-action` is the native GitHub Action deployment of the `stellarpath-cli` AST analyzer. It operates as an impenetrable continuous integration gatekeeper, automatically auditing incoming pull requests for Soroban smart contract repositories.
 
@@ -29,7 +28,7 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 
 ---
 
-## 🏗️ 2. Execution Architecture
+##  2. Execution Architecture
 
 1. **Environment Provisioning**: Downloads the pre-compiled `stellarpath-cli` Rust binary optimized for the GitHub Actions `ubuntu-latest` runner.
 2. **AST Scanning**: Executes `stellarpath scan --format sarif` against the designated contract directory.
@@ -47,7 +46,7 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 
 ---
 
-## 🚀 3. Implementation Matrix
+##  3. Implementation Matrix
 
 To integrate this gatekeeper, define a new workflow file at `.github/workflows/stellarpath-security.yml`.
 
@@ -95,7 +94,7 @@ jobs:
 
 ---
 
-## ⚙️ 4. Input Configuration Specifications
+##  4. Input Configuration Specifications
 
 | Input Key | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
@@ -108,7 +107,7 @@ jobs:
 
 ---
 
-## 🛡️ 5. SARIF Native Integration
+##  5. SARIF Native Integration
 
 When `output-format` is set to `sarif`, `stellarpath-action` serializes the AST diagnostic outputs into the Static Analysis Results Interchange Format (SARIF). 
 
@@ -116,7 +115,7 @@ When uploaded via the CodeQL action, this populates the **GitHub Security tab** 
 
 ---
 
-## 🤝 6. Contributing & Maintenance
+##  6. Contributing & Maintenance
 
 `stellarpath-action` is written in strict TypeScript.
 
