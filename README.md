@@ -28,12 +28,14 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 4. **Enforcement**: Submits inline review comments and terminates with an exit code `1` if strict mode is enabled.
 
 
-- `⠀⠀⠀⠀⠀⠀⠀+-------------------------------------------------------------+`
-- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀stellarpath-action⠀(GitHub⠀Action)⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|`
-- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀*⠀Pull⠀Request⠀AST⠀auditing⠀&⠀automated⠀review⠀comments⠀⠀⠀⠀|`
-- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀*⠀Zero-warning⠀verification⠀rules⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|`
-- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀*⠀SARIF⠀/⠀JSON⠀diagnostic⠀reporting⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|`
-- `⠀⠀⠀⠀⠀⠀⠀+-------------------------------------------------------------+`
+```text
+       +-------------------------------------------------------------+
+       |               stellarpath-action (GitHub Action)            |
+       |  * Pull Request AST auditing & automated review comments    |
+       |  * Zero-warning verification rules                          |
+       |  * SARIF / JSON diagnostic reporting                        |
+       +-------------------------------------------------------------+
+```
 
 
 ---
