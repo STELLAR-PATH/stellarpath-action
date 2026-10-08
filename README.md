@@ -27,14 +27,14 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 3. **Diagnostic Aggregation**: Parses the output payload and maps AST line numbers to GitHub Pull Request diff indices.
 4. **Enforcement**: Submits inline review comments and terminates with an exit code `1` if strict mode is enabled.
 
-```text
-       +-------------------------------------------------------------+
-       |               stellarpath-action (GitHub Action)            |
-       |  * Pull Request AST auditing & automated review comments    |
-       |  * Zero-warning verification rules                          |
-       |  * SARIF / JSON diagnostic reporting                        |
-       +-------------------------------------------------------------+
-```
+
+- `⠀⠀⠀⠀⠀⠀⠀+-------------------------------------------------------------+`
+- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀stellarpath-action⠀(GitHub⠀Action)⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|`
+- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀*⠀Pull⠀Request⠀AST⠀auditing⠀&⠀automated⠀review⠀comments⠀⠀⠀⠀|`
+- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀*⠀Zero-warning⠀verification⠀rules⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|`
+- `⠀⠀⠀⠀⠀⠀⠀|⠀⠀*⠀SARIF⠀/⠀JSON⠀diagnostic⠀reporting⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀|`
+- `⠀⠀⠀⠀⠀⠀⠀+-------------------------------------------------------------+`
+
 
 ---
 
@@ -43,46 +43,46 @@ Following the operational standards of elite protocols like **StellarCanary**, t
 To integrate this gatekeeper, define a new workflow file at `.github/workflows/stellarpath-security.yml`.
 
 ### Example A: Strict Enforcement (Production)
-```yaml
-name: "Soroban Security Audit"
-on:
-  pull_request:
-    branches: [ "main", "release/*" ]
 
-jobs:
-  analyze:
-    name: "AST Security Scan"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v4
-        
-      - name: "Execute STELLAR-PATH"
-        uses: STELLAR-PATH/stellarpath-action@v1
-        with:
-          target-directory: './contracts'
-          fail-on-warnings: true
-          inline-comments: true
-```
+- `name:⠀"Soroban⠀Security⠀Audit"`
+- `on:`
+- `⠀⠀pull_request:`
+- `⠀⠀⠀⠀branches:⠀[⠀"main",⠀"release/*"⠀]`
+- `⠀`
+- `jobs:`
+- `⠀⠀analyze:`
+- `⠀⠀⠀⠀name:⠀"AST⠀Security⠀Scan"`
+- `⠀⠀⠀⠀runs-on:⠀ubuntu-latest`
+- `⠀⠀⠀⠀steps:`
+- `⠀⠀⠀⠀⠀⠀-⠀name:⠀"Checkout⠀code"`
+- `⠀⠀⠀⠀⠀⠀⠀⠀uses:⠀actions/checkout@v4`
+- `⠀⠀⠀⠀⠀⠀⠀⠀`
+- `⠀⠀⠀⠀⠀⠀-⠀name:⠀"Execute⠀STELLAR-PATH"`
+- `⠀⠀⠀⠀⠀⠀⠀⠀uses:⠀STELLAR-PATH/stellarpath-action@v1`
+- `⠀⠀⠀⠀⠀⠀⠀⠀with:`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀target-directory:⠀'./contracts'`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀fail-on-warnings:⠀true`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀inline-comments:⠀true`
+
 
 ### Example B: Matrix Build with GitHub Advanced Security
-```yaml
-jobs:
-  analyze:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: STELLAR-PATH/stellarpath-action@v1
-        with:
-          target-directory: './contracts'
-          output-format: 'sarif'
-          output-file: 'stellarpath-results.sarif'
-          
-      - name: "Upload SARIF Diagnostics"
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: stellarpath-results.sarif
-```
+
+- `jobs:`
+- `⠀⠀analyze:`
+- `⠀⠀⠀⠀runs-on:⠀ubuntu-latest`
+- `⠀⠀⠀⠀steps:`
+- `⠀⠀⠀⠀⠀⠀-⠀uses:⠀actions/checkout@v4`
+- `⠀⠀⠀⠀⠀⠀-⠀uses:⠀STELLAR-PATH/stellarpath-action@v1`
+- `⠀⠀⠀⠀⠀⠀⠀⠀with:`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀target-directory:⠀'./contracts'`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀output-format:⠀'sarif'`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀output-file:⠀'stellarpath-results.sarif'`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
+- `⠀⠀⠀⠀⠀⠀-⠀name:⠀"Upload⠀SARIF⠀Diagnostics"`
+- `⠀⠀⠀⠀⠀⠀⠀⠀uses:⠀github/codeql-action/upload-sarif@v3`
+- `⠀⠀⠀⠀⠀⠀⠀⠀with:`
+- `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀sarif_file:⠀stellarpath-results.sarif`
+
 
 ---
 
